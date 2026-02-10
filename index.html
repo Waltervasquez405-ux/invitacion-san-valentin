@@ -1,109 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de San Valentín</title>
-  <!-- Estilo CSS -->
-  <style>
-    body {
-      background-color: pink;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-    }
-
-    h1 {
-      font-size: 3em;
-      color: white;
-      text-shadow: 2px 2px 5px red;
-      margin-top: 20%;
-    }
-
-    .hearts-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/hearts.png');
-      pointer-events: none;
-    }
-
-    .button-container {
-      margin-top: 20px;
-    }
-
-    button {
-      margin: 10px;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 2px 2px 5px gray;
-    }
-
-    .btn-yes {
-      background-color: red;
-    }
-
-    .btn-no {
-      background-color: gray;
-    }
-
-    .btn-no.moving {
-      position: absolute;
-      transition: transform 0.3s;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .welcome-animation {
-      animation: fadeIn 2s ease-in;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Invitation</title>
 </head>
 <body>
-  <div class="hearts-bg"></div>
-  <h1 class="welcome-animation">¡Quieres ser mi San Valentín, princesa hermosa?</h1>
-  <div class="button-container">
-    <button class="btn-yes">Sí</button>
-    <button class="btn-no">No</button>
-  </div>
-
-  <!-- Script JavaScript -->
-  <script>
-    const btnNo = document.querySelector('.btn-no');
-    const body = document.querySelector('body');
-
-    // Listeners para el botón "No"
-    btnNo.addEventListener('mouseover', moveButton);
-    btnNo.addEventListener('click', moveButton);
-
-    // Función para mover el botón a un lugar aleatorio
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
-      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
-      btnNo.style.transform = `translate(${x}px, ${y}px)`;
-      btnNo.classList.add('moving');
-    }
-
-    // Listener para el botón "Sí"
-    const btnYes = document.querySelector('.btn-yes');
-    btnYes.addEventListener('click', () => {
-      alert('¡Sabía que dirías que sí! 🥰');
-    });
-  </script>
+    <h1>Welcome to the Valentine's Celebration!</h1>
+    <p>Join us for a special occasion filled with love and joy.</p>
 </body>
 </html>

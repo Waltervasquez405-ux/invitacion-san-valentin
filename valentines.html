@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de San Valentín</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: pink;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background: red;
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            width: 100px;
+            height: 90px;
+            background: red;
+            border-radius: 50%;
+        }
+        .heart:before {
+            left: 50px;
+        }
+        .heart:after {
+            right: 50px;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        #buttons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 20px;
+        }
+        .button-heart {
+            width: 100px;
+            height: 90px;
+            background-color: red;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .button-heart.no {
+            position: absolute;
+            animation: move 5s linear infinite;
+        }
+        @keyframes move {
+            0%, 100% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: 0;
+                left: calc(100% - 100px);
+            }
+            50% {
+                top: calc(100% - 90px);
+                left: calc(100% - 100px);
+            }
+            75% {
+                top: calc(100% - 90px);
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="hearts"></div>
+    <div id="buttons">
+        <button class="button-heart yes" onclick="showConfetti()">❤ Sí</button>
+        <button class="button-heart no">No</button>
+    </div>
+    <script>
+        const hearts = document.getElementById("hearts");
+        const yesButton = document.querySelector(".yes");
+
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.animationDuration = Math.random() * 5 + 2 + "s";
+            heart.style.opacity = Math.random();
+            hearts.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }, 300);
+
+        function showConfetti() {
+            const confettiColors = ["#ff0", "#f0f", "#0ff", "#0f0", "#f00", "#00f"];
+            const confettiCount = 200;
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement("div");
+                confetti.style.position = "absolute";
+                confetti.style.width = "10px";
+                confetti.style.height = "10px";
+                confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                confetti.style.animation = "fall 2s linear forwards";
+                hearts.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+            window.setTimeout(() => {
+                window.location.href = "/final-message.html";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
