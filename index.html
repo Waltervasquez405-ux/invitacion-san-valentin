@@ -1,1 +1,109 @@
-<!DOCTYPE html>\n<html lang='es'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Invitación de San Valentín</title>\n    <style>\n        body {\n            background-color: pink;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            position: relative;\n            overflow: hidden;\n        }\n        .card {\n            background: white;\n            padding: 20px;\n            border-radius: 10px;\n            text-align: center;\n            position: relative;\n        }\n        .hearts {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAIABgMAAADFcIjJAAAAAXNSR0IArs4c6QMAAAACXBIWXMAAB7CAAAewgFu0HU+AAABI0lEQVR42mJ0FgBg3UBeEG8aX04Qkkz8FKgA1DaIfIgAABBIPgzYKAqWIXDAHpVwPHwAiUAIMz4ABMmA2XNh0BwhgOjodqAgmCgEhg7kcDDAE5eACEi5AfUAJ4AcoAzSgirAzgUhAAIlipMgLOfIaACAU8NTpQAAHgIbvAH8AAAAASUVORK5CYII=') repeat;\n            pointer-events: none;\n        }\n        .message {\n            font-size: 24px;\n            font-weight: bold;\n            animation: bounce 1s infinite;\n        }\n        @keyframes bounce {\n            0%, 100% { transform: translateY(0); }\n            50% { transform: translateY(-10px); }\n        }\n        button {\n            margin: 10px;\n            padding: 10px 20px;\n            cursor: pointer;\n            font-size: 18px;\n            border: none;\n            border-radius: 5px;\n            background-color: #f0f0f0;\n            transition: transform 0.2s;\n        }\n        button:hover {\n            background-color: #ddd;\n        }\n    </style>\n</head>\n<body>\n    <div class='card'>\n        <div class='hearts'></div>\n        <div class='message'>¿Quieres ser mi San Valentín?</div>\n        <p>De parte de Walter para La Princesa Hermosa</p>\n        <button id='yesButton'>Sí</button>\n        <button id='noButton'>No</button>\n    </div>\n    <script>\n        document.getElementById('noButton').onclick = function() {\n            this.style.transform = 'translateX(20px)';\n        };\n        document.getElementById('yesButton').onclick = function() {\n            alert('¡Confeti!');\n            // Aquí se puede añadir lógica para la animación de confeti\n        };\n    </script>\n</body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de San Valentín</title>
+  <!-- Estilo CSS -->
+  <style>
+    body {
+      background-color: pink;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: white;
+      text-shadow: 2px 2px 5px red;
+      margin-top: 20%;
+    }
+
+    .hearts-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/hearts.png');
+      pointer-events: none;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px gray;
+    }
+
+    .btn-yes {
+      background-color: red;
+    }
+
+    .btn-no {
+      background-color: gray;
+    }
+
+    .btn-no.moving {
+      position: absolute;
+      transition: transform 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .welcome-animation {
+      animation: fadeIn 2s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-bg"></div>
+  <h1 class="welcome-animation">¡Quieres ser mi San Valentín, princesa hermosa?</h1>
+  <div class="button-container">
+    <button class="btn-yes">Sí</button>
+    <button class="btn-no">No</button>
+  </div>
+
+  <!-- Script JavaScript -->
+  <script>
+    const btnNo = document.querySelector('.btn-no');
+    const body = document.querySelector('body');
+
+    // Listeners para el botón "No"
+    btnNo.addEventListener('mouseover', moveButton);
+    btnNo.addEventListener('click', moveButton);
+
+    // Función para mover el botón a un lugar aleatorio
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+      btnNo.style.transform = `translate(${x}px, ${y}px)`;
+      btnNo.classList.add('moving');
+    }
+
+    // Listener para el botón "Sí"
+    const btnYes = document.querySelector('.btn-yes');
+    btnYes.addEventListener('click', () => {
+      alert('¡Sabía que dirías que sí! 🥰');
+    });
+  </script>
+</body>
+</html>
